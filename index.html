@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>V scans — Read Manga & Manhwa Free</title>
+<meta name="description" content="V scans — read your favorite manga and manhwa chapters free, updated daily.">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<!-- Styles -->
+<link rel="stylesheet" href="styles.css">
+
+<link rel="icon" href="https://i.ibb.co/3YQx1Md2/0-DC7-EA69-7-A2-D-4588-9-BAE-3-D8018-FBA6-D0.png">
+</head>
+<body>
+
+<!-- ===================== TOP HEADER ===================== -->
+<header class="site-header">
+  <button class="icon-btn" id="menuToggleBtn" aria-label="Open menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <a href="#/" class="brand" id="brandLink">
+    <img src="https://i.ibb.co/3YQx1Md2/0-DC7-EA69-7-A2-D-4588-9-BAE-3-D8018-FBA6-D0.png" alt="V scans logo" class="brand-logo">
+    <span class="brand-name">V scans</span>
+  </a>
+
+  <div class="header-actions">
+    <button class="icon-btn theme-toggle" id="themeToggleBtn" aria-label="Toggle theme">
+      <i class="fa-solid fa-sun" id="themeIconSun"></i>
+      <i class="fa-solid fa-moon" id="themeIconMoon"></i>
+    </button>
+    <button class="icon-btn" id="searchToggleBtn" aria-label="Search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+    <button class="avatar-btn" id="headerAvatarBtn" aria-label="Account">
+      <img id="headerAvatarImg" class="avatar-img hidden" alt="Your avatar">
+      <i class="fa-solid fa-circle-user" id="headerAvatarPlaceholder"></i>
+    </button>
+  </div>
+</header>
+
+<!-- Search overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-box">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input type="text" id="searchInput" placeholder="Search manga or manhwa...">
+    <button class="icon-btn" id="closeSearchBtn"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+  <div id="searchResults" class="search-results"></div>
+</div>
+
+<!-- ===================== SIDEBAR / SLIDE-OUT NAV ===================== -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <img src="https://i.ibb.co/3YQx1Md2/0-DC7-EA69-7-A2-D-4588-9-BAE-3-D8018-FBA6-D0.png" alt="V scans logo" class="sidebar-logo">
+    <div>
+      <p class="sidebar-title">V scans</p>
+      <p class="sidebar-subtitle">Free manga & manhwa</p>
+    </div>
+    <button class="icon-btn" id="sidebarCloseBtn" aria-label="Close menu"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <div class="sidebar-user" id="sidebarUserBlock">
+    <button class="google-btn" id="googleSignInBtn">
+      <i class="fa-brands fa-google"></i>
+      <span>Login with Google</span>
+    </button>
+  </div>
+
+  <nav class="sidebar-nav">
+    <a href="#/" class="sidebar-link" data-route="home"><i class="fa-solid fa-house"></i><span>Home</span></a>
+    <a href="#/bookmarks" class="sidebar-link" data-route="bookmarks"><i class="fa-solid fa-bookmark"></i><span>Bookmarks</span></a>
+    <a href="#/profile" class="sidebar-link" data-route="profile"><i class="fa-solid fa-user"></i><span>My Profile</span></a>
+    <a href="#/admin" class="sidebar-link admin-link hidden" id="adminNavLink" data-route="admin">
+      <i class="fa-solid fa-gear"></i><span>Admin Dashboard</span>
+    </a>
+  </nav>
+
+  <div class="sidebar-community">
+    <p class="sidebar-section-label">Community & Support</p>
+    <a href="https://discord.gg/P4AgBnpfHU" target="_blank" rel="noopener" class="community-btn discord-btn">
+      <i class="fa-brands fa-discord"></i><span>Join Our Discord</span>
+    </a>
+    <a href="https://www.paypal.me/AnouarBah" target="_blank" rel="noopener" class="community-btn paypal-btn">
+      <i class="fa-brands fa-paypal"></i><span>Support Us on PayPal</span>
+    </a>
+  </div>
+
+  <button class="sidebar-signout hidden" id="signOutBtn">
+    <i class="fa-solid fa-right-from-bracket"></i><span>Sign out</span>
+  </button>
+</aside>
+
+<!-- ===================== CATEGORY RIBBON ===================== -->
+<div class="category-ribbon-wrap">
+  <div class="category-ribbon" id="categoryRibbon">
+    <button class="category-chip active" data-category="all"><i class="fa-solid fa-layer-group"></i>All</button>
+    <button class="category-chip" data-category="Action"><i class="fa-solid fa-fire"></i>Action</button>
+    <button class="category-chip" data-category="Fantasy"><i class="fa-solid fa-wand-sparkles"></i>Fantasy</button>
+    <button class="category-chip" data-category="Shounen"><i class="fa-solid fa-bolt"></i>Shounen</button>
+    <button class="category-chip" data-category="Romance"><i class="fa-solid fa-heart"></i>Romance</button>
+    <button class="category-chip" data-category="Comedy"><i class="fa-solid fa-face-laugh-beam"></i>Comedy</button>
+    <button class="category-chip" data-category="Drama"><i class="fa-solid fa-masks-theater"></i>Drama</button>
+    <button class="category-chip" data-category="Horror"><i class="fa-solid fa-ghost"></i>Horror</button>
+    <button class="category-chip" data-category="Isekai"><i class="fa-solid fa-dungeon"></i>Isekai</button>
+    <button class="category-chip" data-category="Sci-Fi"><i class="fa-solid fa-rocket"></i>Sci-Fi</button>
+  </div>
+</div>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+<main id="app">
+
+  <!-- HOME VIEW -->
+  <section id="homeView" class="view">
+    <h1 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Latest Updates</h1>
+    <div id="mangaFeed" class="manga-feed">
+      <div class="feed-loading"><i class="fa-solid fa-spinner fa-spin"></i> Loading latest chapters...</div>
+    </div>
+    <p id="feedEmptyMsg" class="empty-msg hidden">
+      <i class="fa-solid fa-box-open"></i> No manga found in this category yet.
+    </p>
+  </section>
+
+  <!-- MANGA DETAIL VIEW -->
+  <section id="mangaView" class="view hidden">
+    <button class="back-btn" data-back="home"><i class="fa-solid fa-arrow-left"></i> Back</button>
+    <div id="mangaDetailContent"></div>
+  </section>
+
+  <!-- CHAPTER READER VIEW -->
+  <section id="readerView" class="view hidden">
+    <div class="reader-topbar">
+      <button class="back-btn" id="readerBackBtn"><i class="fa-solid fa-arrow-left"></i> Back</button>
+      <span id="readerChapterTitle" class="reader-title"></span>
+    </div>
+    <div id="readerPages" class="reader-pages"></div>
+    <div class="reader-nav">
+      <button class="reader-nav-btn" id="prevChapterBtn"><i class="fa-solid fa-chevron-left"></i> Prev</button>
+      <button class="reader-nav-btn" id="nextChapterBtn">Next <i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <!-- COMMENTS -->
+    <div class="comments-section">
+      <h3 class="comments-title"><i class="fa-solid fa-comments"></i> Comments</h3>
+      <div id="commentAuthGate" class="comment-auth-gate hidden">
+        <i class="fa-solid fa-lock"></i> Sign in with Google to join the conversation.
+      </div>
+      <form id="commentForm" class="comment-form hidden">
+        <img id="commentAvatar" class="comment-avatar" alt="Your avatar">
+        <textarea id="commentInput" placeholder="Share your thoughts..." rows="2" maxlength="1000"></textarea>
+        <button type="submit" class="icon-btn comment-submit" aria-label="Post comment">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </form>
+      <div id="commentsList" class="comments-list"></div>
+    </div>
+  </section>
+
+  <!-- BOOKMARKS VIEW -->
+  <section id="bookmarksView" class="view hidden">
+    <h1 class="section-title"><i class="fa-solid fa-bookmark"></i> My Bookmarks</h1>
+    <div id="bookmarksFeed" class="manga-feed"></div>
+    <p id="bookmarksEmptyMsg" class="empty-msg hidden"><i class="fa-solid fa-bookmark"></i> You haven't bookmarked any manga yet.</p>
+  </section>
+
+  <!-- PROFILE VIEW -->
+  <section id="profileView" class="view hidden">
+    <h1 class="section-title"><i class="fa-solid fa-user"></i> My Profile</h1>
+    <div id="profileNotSignedIn" class="empty-msg hidden">
+      <i class="fa-solid fa-circle-user"></i> Sign in with Google to view your profile.
+    </div>
+    <div id="profileContent" class="profile-card hidden">
+      <div class="profile-avatar-wrap">
+        <img id="profileAvatarImg" class="profile-avatar" alt="Your avatar">
+        <button class="avatar-edit-btn" id="profileAvatarEditBtn" aria-label="Change avatar">
+          <i class="fa-solid fa-camera"></i>
+        </button>
+        <input type="file" id="profileAvatarInput" accept="image/*" class="hidden">
+      </div>
+      <h2 id="profileDisplayName"></h2>
+      <p id="profileEmail" class="profile-email"></p>
+      <div class="profile-stats">
+        <div class="profile-stat"><span id="profileBookmarkCount">0</span><small>Bookmarks</small></div>
+        <div class="profile-stat"><span id="profileCommentCount">0</span><small>Comments</small></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===================== ADMIN DASHBOARD VIEW ===================== -->
+  <section id="adminView" class="view hidden">
+    <h1 class="section-title"><i class="fa-solid fa-gear"></i> Admin Dashboard</h1>
+
+    <div class="admin-tabs">
+      <button class="admin-tab active" data-admin-tab="mangaList"><i class="fa-solid fa-book"></i> Manga</button>
+      <button class="admin-tab" data-admin-tab="addManga"><i class="fa-solid fa-circle-plus"></i> Add Manga</button>
+      <button class="admin-tab" data-admin-tab="addChapter"><i class="fa-solid fa-file-circle-plus"></i> Add Chapter</button>
+    </div>
+
+    <!-- Manga List / Edit / Delete -->
+    <div class="admin-panel" id="adminMangaListPanel">
+      <div id="adminMangaList" class="admin-manga-list"></div>
+    </div>
+
+    <!-- Add / Edit Manga Form -->
+    <div class="admin-panel hidden" id="adminAddMangaPanel">
+      <form id="addMangaForm" class="admin-form">
+        <input type="hidden" id="editMangaId">
+        <label><i class="fa-solid fa-heading"></i> Title
+          <input type="text" id="mangaTitleInput" required placeholder="Manga title">
+        </label>
+        <label><i class="fa-solid fa-align-left"></i> Description
+          <textarea id="mangaDescInput" required placeholder="Short description" rows="3"></textarea>
+        </label>
+        <label><i class="fa-solid fa-tags"></i> Category
+          <select id="mangaCategoryInput" required>
+            <option value="Action">Action</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Shounen">Shounen</option>
+            <option value="Romance">Romance</option>
+            <option value="Comedy">Comedy</option>
+            <option value="Drama">Drama</option>
+            <option value="Horror">Horror</option>
+            <option value="Isekai">Isekai</option>
+            <option value="Sci-Fi">Sci-Fi</option>
+          </select>
+        </label>
+        <label><i class="fa-solid fa-circle-check"></i> Status
+          <select id="mangaStatusInput" required>
+            <option value="Ongoing">Ongoing</option>
+            <option value="Completed">Completed</option>
+          </select>
+        </label>
+        <label class="file-label"><i class="fa-solid fa-image"></i> Cover Image (from Gallery)
+          <input type="file" id="mangaCoverInput" accept="image/*">
+        </label>
+        <img id="mangaCoverPreview" class="cover-preview hidden" alt="Cover preview">
+        <div id="mangaUploadProgress" class="upload-progress hidden">
+          <i class="fa-solid fa-spinner fa-spin"></i> Uploading cover...
+        </div>
+        <button type="submit" class="primary-btn"><i class="fa-solid fa-floppy-disk"></i> Save Manga</button>
+      </form>
+    </div>
+
+    <!-- Add Chapter Form -->
+    <div class="admin-panel hidden" id="adminAddChapterPanel">
+      <form id="addChapterForm" class="admin-form">
+        <label><i class="fa-solid fa-book"></i> Select Manga
+          <select id="chapterMangaSelect" required></select>
+        </label>
+        <label><i class="fa-solid fa-list-ol"></i> Chapter Name / Number
+          <input type="text" id="chapterNameInput" required placeholder="e.g. Chapter 82">
+        </label>
+        <label class="file-label"><i class="fa-solid fa-images"></i> Chapter Pages (select multiple from Gallery)
+          <input type="file" id="chapterPagesInput" accept="image/*" multiple>
+        </label>
+        <div id="chapterPagesPreview" class="pages-preview"></div>
+        <div id="chapterUploadProgress" class="upload-progress hidden">
+          <i class="fa-solid fa-spinner fa-spin"></i> <span id="chapterUploadProgressText">Uploading pages...</span>
+        </div>
+        <button type="submit" class="primary-btn"><i class="fa-solid fa-cloud-arrow-up"></i> Publish Chapter</button>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<div id="toastContainer" class="toast-container"></div>
+
+<!-- Firebase SDKs (ESM, resolved via import map — no bundler required) -->
+<script type="importmap">
+{
+  "imports": {
+    "firebase/app": "https://www.gstatic.com/firebasejs/10.13.1/firebase-app.js",
+    "firebase/auth": "https://www.gstatic.com/firebasejs/10.13.1/firebase-auth.js",
+    "firebase/firestore": "https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore.js",
+    "firebase/analytics": "https://www.gstatic.com/firebasejs/10.13.1/firebase-analytics.js"
+  }
+}
+</script>
+<script type="module" src="db.js"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>
