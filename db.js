@@ -71,7 +71,7 @@ export {
 };
 
 // ---------- ImgBB config ----------
-export const IMGBB_API_KEY = "7d8f9e0a1b2c3d4e5f6a7b8c9d0e1f2a";
+export const IMGBB_API_KEY = "bf32151ce65f47f2707753b98cfa9b67";
 
 /**
  * Uploads a single File/Blob to ImgBB and resolves with the direct display URL.
